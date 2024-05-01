@@ -4,7 +4,7 @@ astronvim.init()
 return {
   { "folke/lazy.nvim", dir = vim.env.LAZY },
   {
-    "AstroNvim/AstroNvim",
+    "00000vish/AstroNvim",
     build = function()
       if astronvim.config.pin_plugins and astronvim.config.update_notification ~= false then
         vim.schedule(

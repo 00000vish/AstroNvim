@@ -25,7 +25,7 @@ function M.generate_snapshot(write)
   end
   local snapshot = {}
   for _, plugin in ipairs(plugins) do
-    if plugin[1] ~= "AstroNvim/AstroNvim" then
+    if plugin[1] ~= "00000vish/AstroNvim" then
       plugin = { plugin[1], commit = git_commit(plugin.dir), version = plugin.version }
       if prev_snapshot[plugin[1]] and prev_snapshot[plugin[1]].version then
         plugin.version = prev_snapshot[plugin[1]].version
