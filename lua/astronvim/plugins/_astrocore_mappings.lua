@@ -64,11 +64,11 @@ return {
       function() require("astrocore.buffer").nav(-vim.v.count1) end,
       desc = "Previous buffer",
     }
-    maps.n[">b"] = {
+    maps.n["<Tab>"] = {
       function() require("astrocore.buffer").move(vim.v.count1) end,
       desc = "Move buffer tab right",
     }
-    maps.n["<b"] = {
+    maps.n["<S-Tab>"] = {
       function() require("astrocore.buffer").move(-vim.v.count1) end,
       desc = "Move buffer tab left",
     }
