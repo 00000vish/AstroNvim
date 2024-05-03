@@ -22,6 +22,37 @@ return {
     local maps = astro.empty_map_table()
     local sections = assert(opts._map_sections)
 
+    -- Custom --
+    -- Custom Operations
+    maps.v["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', desc = "Paste from clipboard" }
+
+    maps.v["<A-j>"] = { ":m '>+1<CR>gv=gv", desc = "Move line up" }
+    maps.v["<A-k>"] = { ":m '<-2<CR>gv=gv", desc = "Move line down" }
+
+    maps.n["<A-j>"] = { ":m .+1<CR>==", desc = "Move line up" }
+    maps.n["<A-k>"] = { ":m .-2<CR>==", desc = "Move line down" }
+
+    maps.n["<C-d>"] = { "<C-d>zz", desc = "Scroll down" }
+    maps.n["<C-u>"] = { "<C-u>zz", desc = "Scroll up" }
+    maps.n["n"] = { "nzzzv", desc = "Go to previous word" }
+    maps.n["N"] = { "Nzzzv", desc = "Go to next word" }
+
+    maps.n["<C-k>"] = { "<Cmd>cnext<CR>zz",  desc = ""  }
+    maps.n["<C-j>"] = { "<Cmd>cprev<CR>zz",  desc = ""  }
+    maps.n["<Leader>k"] = { "<Cmd>lnext<CR>zz",  desc = "" }
+    maps.n["<Leader>j"] = { "<Cmd>lprev<CR>zz",  desc = "" }
+
+    maps.i["<A-o>"] = { "<Esc>o<Esc>", desc = "Add new line above" }
+    maps.n["<A-o>"] = { "o<Esc>", desc = "Add new line above" }
+    maps.i["<A-O>"] = { "<Esc>O<Esc>", desc = "Add new line below" }
+    maps.n["<A-O>"] = { "O<Esc>", desc = "Add new line below" }
+    maps.i["<C-h>"] = { "<Left>", desc = "Go left" }
+    maps.i["<C-l>"] = { "<Right>", desc = "Go right" }
+    maps.i["<C-j>"] = { "<Down>", desc = "Go down" }
+    maps.i["<C-k>"] = { "<Up>", desc = "Go up" }
+    maps.i["<C-BS>"] =  { "<C-W>", desc = "Clear word left" }
+    maps.i["<C-DEL>"] = { "<Esc>lbce", desc = "Clear word right" }
+
     -- Normal --
     -- Standard Operations
     maps.n["j"] = { "v:count == 0 ? 'gj' : 'j'", expr = true, silent = true, desc = "Move cursor down" }
