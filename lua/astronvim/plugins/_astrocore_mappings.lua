@@ -37,11 +37,6 @@ return {
     maps.n["n"] = { "nzzzv", desc = "Go to previous word" }
     maps.n["N"] = { "Nzzzv", desc = "Go to next word" }
 
-    maps.n["<C-k>"] = { "<Cmd>cnext<CR>zz",  desc = ""  }
-    maps.n["<C-j>"] = { "<Cmd>cprev<CR>zz",  desc = ""  }
-    maps.n["<Leader>k"] = { "<Cmd>lnext<CR>zz",  desc = "" }
-    maps.n["<Leader>j"] = { "<Cmd>lprev<CR>zz",  desc = "" }
-
     maps.i["<A-o>"] = { "<Esc>o<Esc>", desc = "Add new line above" }
     maps.n["<A-o>"] = { "o<Esc>", desc = "Add new line above" }
     maps.i["<A-O>"] = { "<Esc>O<Esc>", desc = "Add new line below" }
@@ -50,7 +45,7 @@ return {
     maps.i["<C-l>"] = { "<Right>", desc = "Go right" }
     maps.i["<C-j>"] = { "<Down>", desc = "Go down" }
     maps.i["<C-k>"] = { "<Up>", desc = "Go up" }
-    maps.i["<C-BS>"] =  { "<C-W>", desc = "Clear word left" }
+    maps.i["<C-BS>"] = { "<C-W>", desc = "Clear word left" }
     maps.i["<C-DEL>"] = { "<Esc>lbce", desc = "Clear word right" }
 
     -- Normal --
@@ -124,8 +119,8 @@ return {
     maps.n["<Leader>ld"] = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" }
     -- TODO: Remove mapping after dropping support for Neovim v0.9, it's automatic
     if vim.fn.has "nvim-0.10" == 0 then
-      maps.n["[d"] = { function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" }
-      maps.n["]d"] = { function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" }
+      maps.n["<C-k>"] = { function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" }
+      maps.n["<C-j>"] = { function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" }
       maps.n["<C-W>d"] = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" }
     end
     maps.n["gl"] = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" }
