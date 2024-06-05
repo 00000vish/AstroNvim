@@ -30,7 +30,7 @@ return {
       local get_icon = require("astroui").get_icon
       return require("astrocore").extend_tbl(opts, {
         features = {
-          large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files
+          large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files
           autopairs = true, -- enable autopairs at start
           cmp = true, -- enable completion at start
           diagnostics_mode = 3, -- enable diagnostics by default
@@ -58,8 +58,11 @@ return {
             header = "",
             prefix = "",
           },
+          -- TODO: remove check when dropping support for neovim v0.10
+          jump = vim.fn.has "nvim-0.11" == 1 and { float = true } or nil,
         },
         rooter = {
+          enabled = true,
           detector = { "lsp", { ".git", "_darcs", ".hg", ".bzr", ".svn" }, { "lua", "MakeFile", "package.json" } },
           ignore = {
             servers = {},

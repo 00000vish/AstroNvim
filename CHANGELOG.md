@@ -1,5 +1,202 @@
 # Changelog
 
+## [4.8.3](https://github.com/AstroNvim/AstroNvim/compare/v4.8.2...v4.8.3) (2024-06-03)
+
+
+### Bug Fixes
+
+* **mappings:** `gx` mapping in visual mode ([8fc1f24](https://github.com/AstroNvim/AstroNvim/commit/8fc1f2492904b2f96b611690d86a652e5271e30e))
+
+
+### Reverts
+
+* use `$LAZY` for lazy dir if it's set ([bf099f2](https://github.com/AstroNvim/AstroNvim/commit/bf099f2d2b6f49e2f8a47e304894ede7a4f2760f))
+
+## [4.8.2](https://github.com/AstroNvim/AstroNvim/compare/v4.8.1...v4.8.2) (2024-06-01)
+
+
+### Bug Fixes
+
+* **lazy:** don't use `$LAZY` for the lazy.nvim dir ([2c25760](https://github.com/AstroNvim/AstroNvim/commit/2c25760d4ecf3c4e32dbf8a2aaa4e006f07fe15f))
+
+## [4.8.1](https://github.com/AstroNvim/AstroNvim/compare/v4.8.0...v4.8.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* **snapshot:** update `nvim-lspconfig` to get ESLint bug fix ([ced9369](https://github.com/AstroNvim/AstroNvim/commit/ced9369b624f43b2342ad08f549f32dc9bf6b4e6))
+
+## [4.8.0](https://github.com/AstroNvim/AstroNvim/compare/v4.7.9...v4.8.0) (2024-05-30)
+
+
+### Features
+
+* backport default LSP mappings in Neovim v0.11 ([36b88be](https://github.com/AstroNvim/AstroNvim/commit/36b88bef78f9726a0b28dda936e9f42fdc7bdbeb))
+
+
+### Bug Fixes
+
+* **astrocore:** handle `vim.diagnostic` changes in neovim v0.11 ([80498ac](https://github.com/AstroNvim/AstroNvim/commit/80498ac2f0ad635922b802644813d378a7bcf5b2))
+
+## [4.7.9](https://github.com/AstroNvim/AstroNvim/compare/v4.7.8...v4.7.9) (2024-05-28)
+
+
+### Bug Fixes
+
+* **notify:** make sure to return the `vim.notify` result ([64757c3](https://github.com/AstroNvim/AstroNvim/commit/64757c325b376c490a329d5a715659fcc027d86a))
+
+## [4.7.8](https://github.com/AstroNvim/AstroNvim/compare/v4.7.7...v4.7.8) (2024-05-28)
+
+
+### Bug Fixes
+
+* **astrocore:** add missing `&lt;Leader&gt;/` mappings for native commenting ([42cba10](https://github.com/AstroNvim/AstroNvim/commit/42cba1043e8b26fc92221643750121d7e8e847e7))
+* **astrolsp:** code action mapping should be `x` mode instead of `v` ([84db33e](https://github.com/AstroNvim/AstroNvim/commit/84db33ef993d1972c9c8b9f2c4886522673c3293))
+
+## [4.7.7](https://github.com/AstroNvim/AstroNvim/compare/v4.7.6...v4.7.7) (2024-05-24)
+
+
+### Bug Fixes
+
+* **astrocore:** add new `enabled` key to rooter ([0cf4960](https://github.com/AstroNvim/AstroNvim/commit/0cf496075a12627c9b333a81d5ddf58634efab36))
+
+## [4.7.6](https://github.com/AstroNvim/AstroNvim/compare/v4.7.5...v4.7.6) (2024-05-23)
+
+
+### Bug Fixes
+
+* **cmp:** improve `cmp` visibility check ([a32371a](https://github.com/AstroNvim/AstroNvim/commit/a32371ac30d9cbdc3e44908342df3059ebeae8f7))
+
+## [4.7.5](https://github.com/AstroNvim/AstroNvim/compare/v4.7.4...v4.7.5) (2024-05-21)
+
+
+### Bug Fixes
+
+* **astroui:** do not overwrite `colors` when modified in place ([c3d90b9](https://github.com/AstroNvim/AstroNvim/commit/c3d90b987287194f4375ed96d16ff9ab0849b771))
+
+## [4.7.4](https://github.com/AstroNvim/AstroNvim/compare/v4.7.3...v4.7.4) (2024-05-21)
+
+
+### Bug Fixes
+
+* **ts-context-commentstring:** add support for native commenting in neovim 0.10+ ([9a16612](https://github.com/AstroNvim/AstroNvim/commit/9a166127de101a5318106b149808deaee48ca61d))
+
+## [4.7.3](https://github.com/AstroNvim/AstroNvim/compare/v4.7.2...v4.7.3) (2024-05-18)
+
+
+### Bug Fixes
+
+* **mappings:** add back next/previous diagnostic mappings to neovim 0.10 ([f0c9a3f](https://github.com/AstroNvim/AstroNvim/commit/f0c9a3fff7f6cab815dd6b38d120cdb291cd393b))
+* **mappings:** add missing default diagnostic mapping backport ([b853b01](https://github.com/AstroNvim/AstroNvim/commit/b853b0154d8b8daae78668e55469973f2d5a927f))
+
+## [4.7.2](https://github.com/AstroNvim/AstroNvim/compare/v4.7.1...v4.7.2) (2024-05-17)
+
+
+### Bug Fixes
+
+* **indent-blankline:** limit updating of `indent-blankline` in Neovim &lt;0.10 ([ce2464c](https://github.com/AstroNvim/AstroNvim/commit/ce2464c90e024289d46557aadd20039bded22d3a))
+
+## [4.7.1](https://github.com/AstroNvim/AstroNvim/compare/v4.7.0...v4.7.1) (2024-05-16)
+
+
+### Bug Fixes
+
+* **astroui:** use single character icon for `DapLogPoint` ([c7e2437](https://github.com/AstroNvim/AstroNvim/commit/c7e2437a4f24ee876b69fc3ae7bdd49c78e38173))
+* **autocmd:** typo in unlist qf description ([#2597](https://github.com/AstroNvim/AstroNvim/issues/2597)) ([c14560e](https://github.com/AstroNvim/AstroNvim/commit/c14560ed0113342aa20a951de0098fef7c233bc5))
+
+## [4.7.0](https://github.com/AstroNvim/AstroNvim/compare/v4.6.7...v4.7.0) (2024-05-14)
+
+
+### Features
+
+* **astroui:** add `runtime_condition` support to `null-ls` statusline integration ([5686c08](https://github.com/AstroNvim/AstroNvim/commit/5686c08563a8ecac2997435c1f1849a96dab1b03))
+
+## [4.6.7](https://github.com/AstroNvim/AstroNvim/compare/v4.6.6...v4.6.7) (2024-05-11)
+
+
+### Bug Fixes
+
+* astrocore spelling in require ([#2588](https://github.com/AstroNvim/AstroNvim/issues/2588)) ([08622d6](https://github.com/AstroNvim/AstroNvim/commit/08622d6ef4c3b8872e0757c8ae0ce7611b943c40))
+
+## [4.6.6](https://github.com/AstroNvim/AstroNvim/compare/v4.6.5...v4.6.6) (2024-05-09)
+
+
+### Bug Fixes
+
+* add missing windows `gdu` executable name possibility ([cb24728](https://github.com/AstroNvim/AstroNvim/commit/cb247284584b972f3ee071958f04e5809315433a)), closes [#2585](https://github.com/AstroNvim/AstroNvim/issues/2585)
+
+## [4.6.5](https://github.com/AstroNvim/AstroNvim/compare/v4.6.4...v4.6.5) (2024-05-08)
+
+
+### Bug Fixes
+
+* **cmp:** `&lt;C-N&gt;` and `<C-P>` should start completion if not started ([54c9f6a](https://github.com/AstroNvim/AstroNvim/commit/54c9f6abcd383d8021a3ff7429c6b74fa9ed8a3a))
+
+
+### Performance Improvements
+
+* **notify:** optimize performance for notification pausing/resuming ([cd57fd4](https://github.com/AstroNvim/AstroNvim/commit/cd57fd4b8c81b168940dbfaf8bae861b6aa6866f))
+
+## [4.6.4](https://github.com/AstroNvim/AstroNvim/compare/v4.6.3...v4.6.4) (2024-05-07)
+
+
+### Bug Fixes
+
+* notification deferment not playing nicely with `nvim-notify` ([d45edb1](https://github.com/AstroNvim/AstroNvim/commit/d45edb12bcc8f3709ae77ada53b2c72daf7f683e)), closes [#2579](https://github.com/AstroNvim/AstroNvim/issues/2579)
+
+## [4.6.3](https://github.com/AstroNvim/AstroNvim/compare/v4.6.2...v4.6.3) (2024-05-07)
+
+
+### Reverts
+
+* use main upstream for `guess-indent` as lazy gets very confused ([3d094ea](https://github.com/AstroNvim/AstroNvim/commit/3d094ea7a6dafa90ac7bf6f48ffb399b28c22b12))
+
+## [4.6.2](https://github.com/AstroNvim/AstroNvim/compare/v4.6.1...v4.6.2) (2024-05-06)
+
+
+### Bug Fixes
+
+* **guess-indent:** update to new API for silencing indentation notifications ([4952573](https://github.com/AstroNvim/AstroNvim/commit/4952573bde22cdba7805ec7f83bb589a59701e2a))
+* **mappings:** remove neovim v0.10 lsp mappings as they got reverted ([0da22af](https://github.com/AstroNvim/AstroNvim/commit/0da22afb4dcdbf360bf65aa85ef44eabf96afa72))
+
+## [4.6.1](https://github.com/AstroNvim/AstroNvim/compare/v4.6.0...v4.6.1) (2024-05-06)
+
+
+### Bug Fixes
+
+* **autocmds:** respect modeline when forwarding events ([5bd0684](https://github.com/AstroNvim/AstroNvim/commit/5bd0684ced37db0dba3f66f10d3e6c84fd526a21))
+
+
+### Performance Improvements
+
+* **guess-indent:** improve lazy loading ([#2561](https://github.com/AstroNvim/AstroNvim/issues/2561)) ([c1e8e74](https://github.com/AstroNvim/AstroNvim/commit/c1e8e74312284223a6faa816e6b75dbfcd4d1c2e))
+
+## [4.6.0](https://github.com/AstroNvim/AstroNvim/compare/v4.5.1...v4.6.0) (2024-05-06)
+
+
+### Features
+
+* add `:AstroVersion` for displaying current version ([168b296](https://github.com/AstroNvim/AstroNvim/commit/168b29644be57e2a59333de554b92d931c9b0566))
+
+## [4.5.1](https://github.com/AstroNvim/AstroNvim/compare/v4.5.0...v4.5.1) (2024-05-05)
+
+
+### Bug Fixes
+
+* decouple mappings to make it easier to override them individually ([3ed1a45](https://github.com/AstroNvim/AstroNvim/commit/3ed1a453dfd079f1477fbeba3d28965a13c92df9)), closes [#2574](https://github.com/AstroNvim/AstroNvim/issues/2574)
+
+## [4.5.0](https://github.com/AstroNvim/AstroNvim/compare/v4.4.4...v4.5.0) (2024-05-03)
+
+
+### Features
+
+* **astrolsp:** add global inlay hints toggle ([7d73045](https://github.com/AstroNvim/AstroNvim/commit/7d730458b115bdc772ac926ce7818d8673b7abc7))
+
+
+### Bug Fixes
+
+* **astrolsp:** remove unnecessary backported `&lt;C-S&gt;` mapping. This is actually a bug because it overwrites a separate AstroNvim default ([1e36e3e](https://github.com/AstroNvim/AstroNvim/commit/1e36e3e7619957a708004b85a1de2c2761f5b354))
+
 ## [4.4.4](https://github.com/AstroNvim/AstroNvim/compare/v4.4.3...v4.4.4) (2024-05-02)
 
 
