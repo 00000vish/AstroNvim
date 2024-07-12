@@ -37,7 +37,6 @@ return {
     opt.splitright = true -- splitting a new window at the right of the current one
     opt.tabstop = 2 -- number of space in a tab
     opt.termguicolors = true -- enable 24-bit RGB color in the TUI
-    opt.timeoutlen = 500 -- shorten key timeout length a little bit for which-key
     opt.title = true -- set terminal title to the filename and path
     opt.undofile = true -- enable persistent undo
     opt.updatetime = 300 -- length of time to wait before triggering the plugin
