@@ -1,47 +1,32 @@
 return {
   "mfussenegger/nvim-dap",
   lazy = true,
-  dependencies = {
-    {
-      "jay-babu/mason-nvim-dap.nvim",
-      dependencies = { "nvim-dap", "williamboman/mason.nvim" },
-      init = function(plugin) require("astrocore").on_load("mason.nvim", plugin.name) end,
-      cmd = { "DapInstall", "DapUninstall" },
-      opts = { ensure_installed = {}, handlers = {} },
-    },
+  specs = {
     {
       "rcarriga/nvim-dap-ui",
       lazy = true,
-      dependencies = {
-        { "nvim-neotest/nvim-nio", lazy = true },
-        {
-          "AstroNvim/astrocore",
-          opts = function(_, opts)
-            local maps = opts.mappings
-            maps.n["<Leader>d"] = vim.tbl_get(opts, "_map_sections", "d")
-            maps.v["<Leader>d"] = vim.tbl_get(opts, "_map_sections", "d")
-            maps.n["<Leader>dE"] = {
-              function()
-                vim.ui.input({ prompt = "Expression: " }, function(expr)
-                  if expr then require("dapui").eval(expr, { enter = true }) end
-                end)
-              end,
-              desc = "Evaluate Input",
-            }
-            maps.n["<Leader>du"] = { function() require("dapui").toggle() end, desc = "Toggle Debugger UI" }
-            maps.n["<Leader>dh"] = { function() require("dap.ui.widgets").hover() end, desc = "Debugger Hover" }
-            maps.v["<Leader>dE"] = { function() require("dapui").eval() end, desc = "Evaluate Input" }
-          end,
-        },
+      specs = {
+        "AstroNvim/astrocore",
+        opts = function(_, opts)
+          local maps = opts.mappings
+          maps.n["<Leader>d"] = vim.tbl_get(opts, "_map_sections", "d")
+          maps.v["<Leader>d"] = vim.tbl_get(opts, "_map_sections", "d")
+          maps.n["<Leader>dE"] = {
+            function()
+              vim.ui.input({ prompt = "Expression: " }, function(expr)
+                if expr then require("dapui").eval(expr, { enter = true }) end
+              end)
+            end,
+            desc = "Evaluate Input",
+          }
+          maps.n["<Leader>du"] = { function() require("dapui").toggle() end, desc = "Toggle Debugger UI" }
+          maps.n["<Leader>dh"] = { function() require("dap.ui.widgets").hover() end, desc = "Debugger Hover" }
+          maps.v["<Leader>dE"] = { function() require("dapui").eval() end, desc = "Evaluate Input" }
+        end,
       },
+      dependencies = { { "nvim-neotest/nvim-nio", lazy = true } },
       opts = { floating = { border = "rounded" } },
       config = function(...) require "astronvim.plugins.configs.nvim-dap-ui"(...) end,
-    },
-    {
-      "rcarriga/cmp-dap",
-      lazy = true,
-      dependencies = { "hrsh7th/nvim-cmp" },
-      config = function(...) require "astronvim.plugins.configs.cmp-dap"(...) end,
     },
     {
       "AstroNvim/astrocore",
@@ -97,4 +82,37 @@ return {
       end,
     },
   },
+  dependencies = {
+    {
+      "jay-babu/mason-nvim-dap.nvim",
+      dependencies = { "nvim-dap", "williamboman/mason.nvim" },
+      init = function(plugin) require("astrocore").on_load("mason.nvim", plugin.name) end,
+      cmd = { "DapInstall", "DapUninstall" },
+      opts_extend = { "ensure_installed" },
+      opts = { ensure_installed = {}, handlers = {} },
+    },
+    {
+      "rcarriga/cmp-dap",
+      lazy = true,
+      dependencies = { "hrsh7th/nvim-cmp" },
+      config = function(...) require "astronvim.plugins.configs.cmp-dap"(...) end,
+    },
+  },
+  opts = function()
+    local parser, cleaner
+    require("dap.ext.vscode").json_decode = function(str)
+      if cleaner == nil then
+        local plenary_avail, plenary = pcall(require, "plenary.json")
+        if plenary_avail then str = plenary.json_strip_comments(str, {}) end
+        cleaner = plenary_avail and function(s) return plenary.json_strip_comments(s, {}) end or false
+      end
+      if type(parser) ~= "function" then
+        local json5_avail, json5 = pcall(require, "json5")
+        parser = json5_avail and json5.parse or vim.json.decode
+      end
+      if type(cleaner) == "function" then str = cleaner(str) end
+      return parser(str)
+    end
+  end,
+  config = function() end, -- HACK: disable config function
 }

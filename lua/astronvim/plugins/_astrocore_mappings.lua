@@ -16,6 +16,7 @@ return {
       g = { desc = get_icon("Git", 1, true) .. "Git" },
       S = { desc = get_icon("Session", 1, true) .. "Session" },
       t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
+      x = { desc = get_icon("List", 1, true) .. "Quickfix/Lists" },
     }
 
     -- initialize mappings table
@@ -137,11 +138,20 @@ return {
 
     maps.n["<Leader>l"] = vim.tbl_get(sections, "l")
     maps.n["<Leader>ld"] = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" }
+    local function diagnostic_goto(dir, severity)
+      local go = vim.diagnostic["goto_" .. (dir and "next" or "prev")]
+      if type(severity) == "string" then severity = vim.diagnostic.severity[severity] end
+      return function() go { severity = severity } end
+    end
     -- TODO: Remove mapping after dropping support for Neovim v0.10, it's automatic
     if vim.fn.has "nvim-0.11" == 0 then
-      maps.n["[d"] = { function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" }
-      maps.n["]d"] = { function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" }
+      maps.n["[d"] = { diagnostic_goto(false), desc = "Previous diagnostic" }
+      maps.n["]d"] = { diagnostic_goto(true), desc = "Next diagnostic" }
     end
+    maps.n["[e"] = { diagnostic_goto(false, "ERROR"), desc = "Previous error" }
+    maps.n["]e"] = { diagnostic_goto(true, "ERROR"), desc = "Next error" }
+    maps.n["[w"] = { diagnostic_goto(false, "WARN"), desc = "Previous warning" }
+    maps.n["]w"] = { diagnostic_goto(true, "WARN"), desc = "Next warning" }
     -- TODO: Remove mapping after dropping support for Neovim v0.9, it's automatic
     if vim.fn.has "nvim-0.10" == 0 then
       maps.n["<C-W>d"] = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" }
@@ -162,6 +172,20 @@ return {
     maps.n["<C-Down>"] = { "<Cmd>resize +2<CR>", desc = "Resize split down" }
     maps.n["<C-Left>"] = { "<Cmd>vertical resize -2<CR>", desc = "Resize split left" }
     maps.n["<C-Right>"] = { "<Cmd>vertical resize +2<CR>", desc = "Resize split right" }
+
+    -- List management
+    maps.n["<Leader>x"] = vim.tbl_get(sections, "x")
+    maps.n["<Leader>xq"] = { "<Cmd>copen<CR>", desc = "Quickfix List" }
+    maps.n["<Leader>xl"] = { "<Cmd>lopen<CR>", desc = "Location List" }
+    maps.n["]q"] = { vim.cmd.cnext, desc = "Next quickfix" }
+    maps.n["[q"] = { vim.cmd.cprev, desc = "Previous quickfix" }
+    maps.n["]Q"] = { vim.cmd.clast, desc = "End quickfix" }
+    maps.n["[Q"] = { vim.cmd.cfirst, desc = "Beginning quickfix" }
+
+    maps.n["]l"] = { vim.cmd.lnext, desc = "Next loclist" }
+    maps.n["[l"] = { vim.cmd.lprev, desc = "Previous loclist" }
+    maps.n["]L"] = { vim.cmd.llast, desc = "End loclist" }
+    maps.n["[L"] = { vim.cmd.lfirst, desc = "Beginning loclist" }
 
     -- Stay in indent mode
     maps.v["<S-Tab>"] = { "<gv", desc = "Unindent line" }

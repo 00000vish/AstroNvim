@@ -1,6 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  dependencies = {
+  specs = {
     { "nvim-lua/plenary.nvim", lazy = true },
     { "MunifTanjim/nui.nvim", lazy = true },
     {
@@ -171,7 +171,7 @@ return {
         width = 30,
         mappings = {
           ["<S-CR>"] = "system_open",
-          ["<Space>"] = false, -- disable space until we figure out which-key disabling
+          ["<Space>"] = false,
           ["[b"] = "prev_source",
           ["]b"] = "next_source",
           O = "system_open",
